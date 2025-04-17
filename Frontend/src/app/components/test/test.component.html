@@ -1,0 +1,12 @@
+<div>
+    <h2>Komplimente</h2>
+    <input #text placeholder="Neues Kompliment hinzufügen">
+    <button (click)="addCompliment(text.value)">Hinzufügen</button>
+    <button (click)="clearStorage()">Speicher löschen</button>
+  
+    <h3>Gespeicherte Komplimente:</h3>
+    <ul>
+      <li *ngFor="let compliment of compliments">{{ compliment.text }}</li>
+    </ul>
+  </div>
+  

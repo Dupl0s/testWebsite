@@ -1,0 +1,8 @@
+{
+    "compliments": [
+      { "id": 1, "text": "Du bist großartig!" },
+      { "id": 2, "text": "Du machst einen tollen Job!" },
+      { "id": 3, "text": "Du bist ein wunderbarer Mensch!" }
+    ]
+  }
+  
