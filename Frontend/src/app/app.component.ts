@@ -1,12 +1,13 @@
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { filter, switchMap } from 'rxjs/operators';
+import { routes } from './app.routes';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

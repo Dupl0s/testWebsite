@@ -2,21 +2,15 @@
   <nav>
     <a routerLink="/" routerLinkActive="active" class="home">{{ urlName }}</a>
     <div class="nav-links">
-      <a
-        routerLink="/compliments"
-        routerLinkActive="compliments"
-        href="/compliments"
-        >Komplimente</a
-      >
-      <a
-        routerLink="/test"
-        routerLinkActive="test"
-        href="/test"
-        >Test</a
-      >
+      <a routerLink="/compliments" routerLinkActive="active">Komplimente</a>
+      <a routerLink="/test" routerLinkActive="active">Test</a>
     </div>
+    <router-outlet></router-outlet>
+
+
   </nav>
 </header>
+
 <body>
   <router-outlet></router-outlet>
 </body>
