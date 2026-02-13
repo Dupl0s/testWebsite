@@ -1,16 +1,284 @@
-<header>
-  <nav>
-    <a routerLink="/" routerLinkActive="active" class="home">{{ urlName }}</a>
-    <div class="nav-links">
-      <a routerLink="/compliments" routerLinkActive="active">Komplimente</a>
-      <a routerLink="/test" routerLinkActive="active">Test</a>
+<!-- Fallende Herzen Hintergrund -->
+<div class="falling-hearts" aria-hidden="true">
+  <span>💕</span><span>❤️</span><span>💗</span><span>💘</span><span>🌹</span>
+  <span>💖</span><span>💝</span><span>❤️</span><span>💕</span><span>🌹</span>
+  <span>💘</span><span>💗</span><span>💖</span><span>❤️</span><span>💝</span>
+  <span>🌹</span><span>💕</span><span>💘</span><span>💗</span><span>💖</span>
+</div>
+
+<!-- Konfetti -->
+<div class="confetti-container" *ngIf="showConfetti" aria-hidden="true">
+  <span *ngFor="let i of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]"
+        class="confetti-piece"></span>
+</div>
+
+<!-- Progress-Dots -->
+<div class="progress-bar" *ngIf="step > 0">
+  <span *ngFor="let s of [1,2,3,4,5,6,7,8]"
+        class="dot"
+        [class.active]="step >= s"
+        [class.current]="step === s"></span>
+</div>
+
+<div class="page">
+
+  <!-- ====== STEP 0: Start-Screen ====== -->
+  <section class="reveal-step start-screen" *ngIf="step === 0">
+    <div class="start-content">
+      <div class="big-heart">💘</div>
+      <h1 class="start-title">Hey Vangi...</h1>
+      <p class="start-sub">Ich hab etwas für dich vorbereitet.</p>
+      <p class="start-hint">Bist du bereit?</p>
+      <button class="reveal-btn" (click)="nextStep()">
+        Überraschung starten ✨
+      </button>
     </div>
-    <router-outlet></router-outlet>
+  </section>
 
+  <!-- ====== STEP 1: Countdown ====== -->
+  <section class="reveal-step" *ngIf="step >= 1" [class.entrance]="step === 1">
+    <p class="step-label">Schritt 1 von 8</p>
+    <h2 class="reveal-title">⏳ Etwas Besonderes steht bevor...</h2>
+    <p class="reveal-text">In wenigen Stunden passiert etwas Magisches:</p>
+    <div class="countdown">
+      <div class="countdown-block">
+        <span class="countdown-number">{{ days }}</span>
+        <span class="countdown-unit">Tage</span>
+      </div>
+      <div class="countdown-block">
+        <span class="countdown-number">{{ hours }}</span>
+        <span class="countdown-unit">Stunden</span>
+      </div>
+      <div class="countdown-block">
+        <span class="countdown-number">{{ minutes }}</span>
+        <span class="countdown-unit">Minuten</span>
+      </div>
+      <div class="countdown-block">
+        <span class="countdown-number">{{ seconds }}</span>
+        <span class="countdown-unit">Sekunden</span>
+      </div>
+    </div>
+    <button class="reveal-btn" (click)="nextStep()" *ngIf="step === 1">
+      Was passiert dann? 🤔
+    </button>
+  </section>
 
-  </nav>
-</header>
+  <!-- ====== STEP 2: Hinweis – Es geht auf Reisen ====== -->
+  <section class="reveal-step" *ngIf="step >= 2" [class.entrance]="step === 2">
+    <p class="step-label">Schritt 2 von 8</p>
+    <h2 class="reveal-title">🧳 Wir gehen auf eine Reise!</h2>
+    <p class="reveal-text">
+      Pack schon mal (im Kopf) deine Sachen... wir zwei fahren irgendwohin. 😏
+    </p>
+    <div class="hint-emojis">🧳 👗 📸 🎶</div>
+    <button class="reveal-btn" (click)="nextStep()" *ngIf="step === 2">
+      Wohin geht es? 👀
+    </button>
+  </section>
 
-<body>
-  <router-outlet></router-outlet>
-</body>
+  <!-- ====== STEP 3: Enthüllung – PARIS! ====== -->
+  <section class="reveal-step highlight-step" *ngIf="step >= 3" [class.entrance]="step === 3">
+    <p class="step-label">Schritt 3 von 8</p>
+    <div class="big-reveal">
+      <h2 class="reveal-title massive">🇫🇷 PARIS! 🗼</h2>
+      <p class="reveal-text big">
+        Wir fahren nach <strong>Paris</strong> – die Stadt der Liebe!
+      </p>
+    </div>
+    <div class="hero-graphic" aria-hidden="true">
+      <div class="sky">
+        <div class="sun"></div>
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+        <div class="cloud cloud-3"></div>
+        <div class="sparkles">
+          <span>✨</span><span>✨</span><span>✨</span><span>✨</span><span>✨</span>
+        </div>
+      </div>
+      <svg class="eiffel" viewBox="0 0 140 220" fill="none">
+        <path d="M70 8 L55 60 L85 60 Z" fill="#c4956e"/>
+        <rect x="62" y="8" width="16" height="4" rx="2" fill="#d4a57a"/>
+        <rect x="58" y="60" width="24" height="6" rx="1" fill="#b0845e"/>
+        <path d="M55 66 L48 100 L92 100 L85 66 Z" fill="#c4956e"/>
+        <rect x="45" y="100" width="50" height="6" rx="1" fill="#a07050"/>
+        <path d="M48 106 L35 170 L105 170 L92 106 Z" fill="#b5886a"/>
+        <rect x="30" y="170" width="80" height="8" rx="1" fill="#a07050"/>
+        <path d="M35 178 L22 210 L118 210 L105 178 Z" fill="#c4956e"/>
+        <rect x="18" y="210" width="104" height="8" rx="2" fill="#8b6650"/>
+        <rect x="64" y="72" width="12" height="14" rx="6" fill="#ffeedd" opacity="0.7"/>
+        <rect x="58" y="120" width="10" height="16" rx="5" fill="#ffeedd" opacity="0.5"/>
+        <rect x="72" y="120" width="10" height="16" rx="5" fill="#ffeedd" opacity="0.5"/>
+        <g transform="translate(60, 0) scale(0.18)">
+          <path d="M50 30 A20 20 0 0 1 90 30 A20 20 0 0 1 50 70 A20 20 0 0 1 10 30 A20 20 0 0 1 50 30Z" fill="#ff4f8b"/>
+        </g>
+      </svg>
+      <div class="hearts">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+    <button class="reveal-btn" (click)="nextStep()" *ngIf="step === 3">
+      Wie kommen wir dahin? 🚂
+    </button>
+  </section>
+
+  <!-- ====== STEP 4: TGV ====== -->
+  <section class="reveal-step" *ngIf="step >= 4" [class.entrance]="step === 4">
+    <p class="step-label">Schritt 4 von 8</p>
+    <h2 class="reveal-title">🚄 Mit dem TGV!</h2>
+    <p class="reveal-text">
+      Schnell, gemütlich und romantisch – wir nehmen den Hochgeschwindigkeitszug nach Paris.
+    </p>
+    <div class="train-showcase">
+      <div class="train">
+        <div class="train-nose"></div>
+        <div class="train-window"></div>
+        <div class="train-window"></div>
+        <div class="train-window"></div>
+        <div class="train-door"></div>
+        <div class="train-label">TGV</div>
+      </div>
+      <div class="tracks"></div>
+    </div>
+    <div class="cta">
+      🗼 Paris Tagesausflug &bull; 🚄 TGV &bull; 🥐 Croissants &amp; Küsse
+    </div>
+    <button class="reveal-btn" (click)="nextStep()" *ngIf="step === 4">
+      Was machen wir dort? 🥐
+    </button>
+  </section>
+
+  <!-- ====== STEP 5: Tagesplan ====== -->
+  <section class="reveal-step" *ngIf="step >= 5" [class.entrance]="step === 5">
+    <p class="step-label">Schritt 5 von 8</p>
+    <h2 class="reveal-title">🗓️ Unser Tag in Paris</h2>
+    <div class="itinerary">
+      <div class="card">
+        <div class="card-icon">☕</div>
+        <h3>Abfahrt am Morgen</h3>
+        <p>Wir starten früh, Kaffee in der Hand, Musik im Ohr. Der TGV bringt uns in wenigen Stunden nach Paris.</p>
+        <span class="tag">🚄 Start: TGV</span>
+      </div>
+      <div class="card featured">
+        <div class="card-icon">🗼</div>
+        <h3>Paris, mon amour</h3>
+        <p>Spaziergang an der Seine, Blick vom Eiffelturm, Patisserie-Stopp mit den besten Macarons der Stadt.</p>
+        <span class="tag">✨ Highlight</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌙</div>
+        <h3>Zurück am Abend</h3>
+        <p>Glücklich müde, mit Fotos im Herzen (und im Handy). Hand in Hand im TGV zurück.</p>
+        <span class="tag">🏠 Heimfahrt</span>
+      </div>
+    </div>
+    <button class="reveal-btn" (click)="nextStep()" *ngIf="step === 5">
+      Da ist noch mehr... 💌
+    </button>
+  </section>
+
+  <!-- ====== STEP 6: Liebesbrief ====== -->
+  <section class="reveal-step" *ngIf="step >= 6" [class.entrance]="step === 6">
+    <p class="step-label">Schritt 6 von 8</p>
+    <h2 class="reveal-title">💌 Ein Brief für dich</h2>
+    <p class="reveal-text">Klick auf den Umschlag...</p>
+
+    <div class="envelope-section">
+      <div class="envelope" [class.open]="envelopeOpen" (click)="toggleEnvelope()">
+        <div class="envelope-flap"></div>
+        <div class="envelope-body">
+          <div class="letter" [class.visible]="envelopeOpen">
+            <p class="letter-greeting">Liebe Vangi,</p>
+            <p class="letter-text">
+              Du bist das Schönste, was mir je passiert ist. Jeder Tag mit dir fühlt sich an
+              wie ein Geschenk. Diesen Valentinstag möchte ich dir zeigen, wie besonders du
+              für mich bist – mit einem gemeinsamen Abenteuer in der Stadt der Liebe. 💕
+            </p>
+            <p class="letter-text">
+              Paris wartet auf uns, und ich kann es kaum erwarten, mit dir den Eiffelturm
+              zu sehen, an der Seine zu spazieren und einfach nur Zeit mit dir zu genießen.
+            </p>
+            <p class="letter-sign">In Liebe, für immer dein ❤️</p>
+          </div>
+        </div>
+      </div>
+      <p class="envelope-hint" *ngIf="!envelopeOpen">👆 Klick, um den Brief zu öffnen</p>
+    </div>
+
+    <button class="reveal-btn" (click)="nextStep()" *ngIf="step === 6">
+      Fast geschafft... 🎫
+    </button>
+  </section>
+
+  <!-- ====== STEP 7: Ticket ====== -->
+  <section class="reveal-step" *ngIf="step >= 7" [class.entrance]="step === 7">
+    <p class="step-label">Schritt 7 von 8</p>
+    <h2 class="reveal-title">🎫 Dein Ticket</h2>
+
+    <div class="ticket-wrapper">
+      <div class="ticket">
+        <div class="ticket-stamp">💘</div>
+        <div class="ticket-top">
+          <span>🚄 TGV</span>
+          <span>Paris – Tagesausflug</span>
+        </div>
+        <div class="ticket-divider"></div>
+        <div class="ticket-main">
+          <div>
+            <small>Reisende</small>
+            <strong>Vangi &amp; Ich</strong>
+          </div>
+          <div>
+            <small>Klasse</small>
+            <strong>1. Klasse 💎</strong>
+          </div>
+          <div>
+            <small>Sitzplätze</small>
+            <strong>Zweisamkeit</strong>
+          </div>
+        </div>
+        <div class="ticket-divider"></div>
+        <div class="ticket-bottom">
+          ✅ Bestätigt – dein „Oui" ist schon gebucht.
+        </div>
+      </div>
+    </div>
+
+    <button class="reveal-btn" (click)="nextStep()" *ngIf="step === 7">
+      Letzter Schritt... 💖
+    </button>
+  </section>
+
+  <!-- ====== STEP 8: Finale ====== -->
+  <section class="reveal-step finale" *ngIf="step >= 8" [class.entrance]="step === 8">
+    <p class="step-label">Schritt 8 von 8</p>
+    <h2 class="reveal-title massive">💝 Für meine Vangi</h2>
+    <p class="reveal-text big">
+      Ich wollte dir etwas schenken, das wir gemeinsam erleben können. Paris wartet auf uns –
+      und ich freue mich darauf, jeden Moment mit dir zu teilen.
+    </p>
+    <div class="love-quote">
+      „Die schönsten Reisen sind die, die man mit dem Menschen macht, den man liebt." 💫
+    </div>
+
+    <div class="final-question" *ngIf="!finalRevealed">
+      <p class="final-ask">Also Vangi... sagst du „Oui"? 🥺</p>
+      <button class="reveal-btn finale-btn" (click)="revealFinal()">
+        💖 JA, OUI! 💖
+      </button>
+    </div>
+
+    <div class="final-answer" *ngIf="finalRevealed">
+      <div class="big-heart final-heart">💕</div>
+      <h2 class="final-yay">Ich freu mich so! 🥳🎉</h2>
+      <p class="final-text">Paris, wir kommen! 🗼🇫🇷</p>
+      <p class="note">P.S. Ich hab die perfekte Playlist vorbereitet. 🎶</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="valentine-footer">
+      <p>Made with ❤️ für Vangi</p>
+      <p class="footer-small">Happy Valentine's Day 2026 💕</p>
+    </footer>
+  </section>
+
+</div>
