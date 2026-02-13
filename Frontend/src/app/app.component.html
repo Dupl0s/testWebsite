@@ -14,7 +14,7 @@
 
 <!-- Progress-Dots -->
 <div class="progress-bar" *ngIf="step > 0">
-  <span *ngFor="let s of [1,2,3,4,5,6,7,8]"
+  <span *ngFor="let s of [1,2,3,4,5,6,7]"
         class="dot"
         [class.active]="step >= s"
         [class.current]="step === s"></span>
@@ -37,7 +37,7 @@
 
   <!-- ====== STEP 1: Countdown ====== -->
   <section class="reveal-step" *ngIf="step >= 1" [class.entrance]="step === 1">
-    <p class="step-label">Schritt 1 von 8</p>
+    <p class="step-label">Schritt 1 von 7</p>
     <h2 class="reveal-title">⏳ Etwas Besonderes steht bevor...</h2>
     <p class="reveal-text">In wenigen Stunden passiert etwas Magisches:</p>
     <div class="countdown">
@@ -65,7 +65,7 @@
 
   <!-- ====== STEP 2: Hinweis – Es geht auf Reisen ====== -->
   <section class="reveal-step" *ngIf="step >= 2" [class.entrance]="step === 2">
-    <p class="step-label">Schritt 2 von 8</p>
+    <p class="step-label">Schritt 2 von 7</p>
     <h2 class="reveal-title">🧳 Wir gehen auf eine Reise!</h2>
     <p class="reveal-text">
       Pack schon mal (im Kopf) deine Sachen... wir zwei fahren irgendwohin. 😏
@@ -78,7 +78,7 @@
 
   <!-- ====== STEP 3: Enthüllung – PARIS! ====== -->
   <section class="reveal-step highlight-step" *ngIf="step >= 3" [class.entrance]="step === 3">
-    <p class="step-label">Schritt 3 von 8</p>
+    <p class="step-label">Schritt 3 von 7</p>
     <div class="big-reveal">
       <h2 class="reveal-title massive">🇫🇷 PARIS! 🗼</h2>
       <p class="reveal-text big">
@@ -123,7 +123,7 @@
 
   <!-- ====== STEP 4: TGV ====== -->
   <section class="reveal-step" *ngIf="step >= 4" [class.entrance]="step === 4">
-    <p class="step-label">Schritt 4 von 8</p>
+    <p class="step-label">Schritt 4 von 7</p>
     <h2 class="reveal-title">🚄 Mit dem TGV!</h2>
     <p class="reveal-text">
       Schnell, gemütlich und romantisch – wir nehmen den Hochgeschwindigkeitszug nach Paris.
@@ -149,7 +149,7 @@
 
   <!-- ====== STEP 5: Tagesplan ====== -->
   <section class="reveal-step" *ngIf="step >= 5" [class.entrance]="step === 5">
-    <p class="step-label">Schritt 5 von 8</p>
+    <p class="step-label">Schritt 5 von 7</p>
     <h2 class="reveal-title">🗓️ Unser Tag in Paris</h2>
     <div class="itinerary">
       <div class="card">
@@ -172,46 +172,15 @@
       </div>
     </div>
     <button class="reveal-btn" (click)="nextStep()" *ngIf="step === 5">
-      Da ist noch mehr... 💌
-    </button>
-  </section>
-
-  <!-- ====== STEP 6: Liebesbrief ====== -->
-  <section class="reveal-step" *ngIf="step >= 6" [class.entrance]="step === 6">
-    <p class="step-label">Schritt 6 von 8</p>
-    <h2 class="reveal-title">💌 Ein Brief für dich</h2>
-    <p class="reveal-text">Klick auf den Umschlag...</p>
-
-    <div class="envelope-section">
-      <div class="envelope" [class.open]="envelopeOpen" (click)="toggleEnvelope()">
-        <div class="envelope-flap"></div>
-        <div class="envelope-body">
-          <div class="letter" [class.visible]="envelopeOpen">
-            <p class="letter-greeting">Liebe Vangi,</p>
-            <p class="letter-text">
-              Du bist das Schönste, was mir je passiert ist. Jeder Tag mit dir fühlt sich an
-              wie ein Geschenk. Diesen Valentinstag möchte ich dir zeigen, wie besonders du
-              für mich bist – mit einem gemeinsamen Abenteuer in der Stadt der Liebe. 💕
-            </p>
-            <p class="letter-text">
-              Paris wartet auf uns, und ich kann es kaum erwarten, mit dir den Eiffelturm
-              zu sehen, an der Seine zu spazieren und einfach nur Zeit mit dir zu genießen.
-            </p>
-            <p class="letter-sign">In Liebe, für immer dein ❤️</p>
-          </div>
-        </div>
-      </div>
-      <p class="envelope-hint" *ngIf="!envelopeOpen">👆 Klick, um den Brief zu öffnen</p>
-    </div>
-
-    <button class="reveal-btn" (click)="nextStep()" *ngIf="step === 6">
       Fast geschafft... 🎫
     </button>
   </section>
 
-  <!-- ====== STEP 7: Ticket ====== -->
-  <section class="reveal-step" *ngIf="step >= 7" [class.entrance]="step === 7">
-    <p class="step-label">Schritt 7 von 8</p>
+
+
+  <!-- ====== STEP 6: Ticket ====== -->
+  <section class="reveal-step" *ngIf="step >= 6" [class.entrance]="step === 6">
+    <p class="step-label">Schritt 6 von 7</p>
     <h2 class="reveal-title">🎫 Dein Ticket</h2>
 
     <div class="ticket-wrapper">
@@ -243,14 +212,14 @@
       </div>
     </div>
 
-    <button class="reveal-btn" (click)="nextStep()" *ngIf="step === 7">
+    <button class="reveal-btn" (click)="nextStep()" *ngIf="step === 6">
       Letzter Schritt... 💖
     </button>
   </section>
 
-  <!-- ====== STEP 8: Finale ====== -->
-  <section class="reveal-step finale" *ngIf="step >= 8" [class.entrance]="step === 8">
-    <p class="step-label">Schritt 8 von 8</p>
+  <!-- ====== STEP 7: Finale ====== -->
+  <section class="reveal-step finale" *ngIf="step >= 7" [class.entrance]="step === 7">
+    <p class="step-label">Schritt 7 von 7</p>
     <h2 class="reveal-title massive">💝 Für meine Vangi</h2>
     <p class="reveal-text big">
       Ich wollte dir etwas schenken, das wir gemeinsam erleben können. Paris wartet auf uns –

@@ -13,7 +13,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   // Reveal-System: step 0 = Start, jeder Klick enthüllt mehr
   step = 0;
-  maxSteps = 8;
+  maxSteps = 7;
 
   days = 0;
   hours = 0;
